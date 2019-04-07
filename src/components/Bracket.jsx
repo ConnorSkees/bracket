@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Round from './Round'
 import Match from './Match'
 
+const uuidv4 = require('uuid/v4');
 
 const teams = [
   [
@@ -42,7 +43,7 @@ class Bracket extends Component {
 
   renderTeam(teams){
     return (
-        <div className={ teams.length === 1 ? "group single" : "group"}>
+        <div key={ uuidv4() } className={ teams.length === 1 ? "group single" : "group"}>
             <div className="col">
               <Match top={ teams[0].top } bottom={ teams[0].bottom } inProgress={ !teams[0].winnerPos } winnerPos={ teams[0].winnerPos }/>
               { teams.length > 1 ? <Match top={ teams[1].top } bottom={ teams[1].bottom } inProgress={ !teams[1].winnerPos } winnerPos={ teams[0].winnerPos } /> : "" }
@@ -61,7 +62,7 @@ class Bracket extends Component {
                       <div className="bracket__region">
                         { teams.map(team => {
                           return (
-                            <div className="bracket__round">
+                            <div key={ uuidv4() } className="bracket__round">
                               <div className="matchups">
                                 { this._groupIntoColumns(team).map(this.renderTeam) }
                               </div>
