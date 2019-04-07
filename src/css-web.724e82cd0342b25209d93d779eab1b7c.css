@@ -1,7 +1,26 @@
+i {
+    font-style: normal
+}
+
 .flx1 {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 0%;
     flex: 1 1 0%
+}
+
+[css-icon],[js-icon],[js-team-logo] {
+    background-repeat: no-repeat
+}
+
+[js-team-logo] {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-size: 45%;
+    background-repeat: no-repeat;
+    background-position: 50% 45%
 }
 
 .ui__popup--container>* {
@@ -78,6 +97,16 @@
     border-top-right-radius: 0;
     border-bottom-left-radius: calc(.6rem - 1px);
     border-bottom-right-radius: calc(.6rem - 1px)
+}
+
+.matchup__container .matchup__teams .team__row [js-team-logo] {
+    background-position: 50% 50%;
+    background-size: 100% auto;
+    display: block;
+    margin-right: calc(.8rem - 2px);
+    width: 1.6em;
+    height: 1.6em;
+    position: static
 }
 
 .matchup__container .matchup__teams .team__row .team__picked {
@@ -201,10 +230,7 @@
     height: 5em;
     top: 3.33333em;
     position: absolute;
-    padding: 0 .5em;
-    pointer-events: none;
-    background-color: rgba(255, 255, 255, 0);
-}
+    padding: 0 .5em;}
 
 .v2-bracket .bracket__region:nth-child(odd) .region__name {
     left: 0
@@ -248,23 +274,19 @@
     -webkit-box-flex: 1;
     -ms-flex: 1 1 0%;
     flex: 1 1 0%;
-    max-width: 19em;
+    max-width: 19em
 }
 
 .v2-bracket .bracket__round .group .v2-matchup {
-    margin-top: 0;
+    margin-top: 0
 }
 
 .v2-bracket .bracket__round .group .v2-matchup:not(:first-child) {
-    margin-top: 1em;
+    margin-top: 1em
 }
 
-.v2-bracket .bracket__round .group:not(:first-child):not(.single) {
-    margin-top: 2em;
-}
-
-.v2-bracket .bracket__region .bracket__round:first-child .single {
-  margin-top: 5.7em;
+.v2-bracket .bracket__round .group:not(:first-child) {
+    margin-top: 2em
 }
 
 .v2-bracket .bracket__round .connector {
@@ -275,7 +297,7 @@
     border-width: .05em;
     border-style: solid;
     border-left-width: 0;
-    color: #979797;
+    color: #979797
 }
 
 .v2-bracket .bracket__round .connector:after,.v2-bracket .bracket__round .connector:before {
@@ -306,7 +328,7 @@
 
 .v2-bracket .bracket__region .bracket__round .connector {
     margin-top: 3.2em;
-    margin-bottom: calc(3.1em); /* + .5px */
+    margin-bottom: 3.2em
 }
 
 .v2-bracket .bracket__region .bracket__round .group .col {
@@ -371,43 +393,13 @@ body {
     -webkit-tap-highlight-color: rgba(255,255,255,0);
     -ms-touch-action: pan-x pan-y;
     touch-action: pan-x pan-y;
-    /* -webkit-user-select: none;
+    -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none; */
+    user-select: none;
     word-wrap: break-word;
     background-color: #f0eff4;
     font-family: Geogrotesque,Geo Grotesque,GeoGrotesque,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Droid Sans,Helvetica Neue,sans-serif;
-}
-
-.matchup__container {
-  pointer-events: none;
-}
-
-.team__row:not(.loser) {
-  cursor: pointer;
-  pointer-events: auto;
-  transition-duration: .28s;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
-  transition-property: background-color;
-  background-color: #fff;
-
-}
-.team__row:not(.loser):hover {
-  background-color: rgb(238,238,238);
-}
-
-.team__row.loser {
-  cursor: pointer;
-  pointer-events: auto;
-  transition-duration: .28s;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
-  transition-property: background-color;
-  background-color: #e1e1e5;
-}
-
-.team__row.loser:hover {
-  background-color: rgb(200,200,200);
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -418,26 +410,3 @@ html, body, #root, .ui__popup--container {
   width: 100%;
   height: 100%;
 }
-
-/* Dark Mode */
-/* body {
-  background-color: #222222;
-}
-
-a * {
-  color: #8db2e5;
-  background-color: #3d3c3c !important;
-}
-
-.matchup__container {
-  border-color: rgb(100,100,100);
-}
-
-.connector, .connector:after, .connector:before {
-  color: rgb(100,100,100);
-  border-color: rgb(100,100,100);
-}
-
-.region__name {
-  color: #fff;
-} */
