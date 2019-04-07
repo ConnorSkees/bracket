@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Round from './Round'
 import Match from './Match'
 
 const uuidv4 = require('uuid/v4');
@@ -26,7 +25,7 @@ const teams = [
     {'top': 'Memphis', 'bottom': 'Creighton', 'winnerPos': 'top'},
   ],
   [
-    {'top': 'Lousville', 'bottom': 'Memphis', 'inProgress': true},
+    {'top': 'Lousville', 'bottom': 'Memphis'},
   ],
 ]
 

@@ -68,7 +68,7 @@ class Match extends Component {
 
   render() {
     return (
-      <div className="v2-matchup" href="javascript:void(0);">
+      <div className="v2-matchup">
           <div className="matchup__container">
               <div className="matchup__teams">
                   { this.renderInProgress() }
