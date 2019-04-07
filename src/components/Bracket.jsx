@@ -40,12 +40,12 @@ class Bracket extends Component {
     return groups;
   }
 
-  renderTeam(teams){
+  renderTeam(matches){
     return (
-        <div key={ uuidv4() } className={ teams.length === 1 ? "group single" : "group"}>
+        <div key={ uuidv4() } className={ matches.length === 1 ? "group single" : "group"}>
             <div className="col">
-              <Match top={ teams[0].top } bottom={ teams[0].bottom } inProgress={ !teams[0].winnerPos } winnerPos={ teams[0].winnerPos }/>
-              { teams.length > 1 ? <Match top={ teams[1].top } bottom={ teams[1].bottom } inProgress={ !teams[1].winnerPos } winnerPos={ teams[0].winnerPos } /> : "" }
+              <Match top={ matches[0].top } bottom={ matches[0].bottom } inProgress={ !matches[0].winnerPos } winnerPos={ matches[0].winnerPos }/>
+              { matches.length > 1 ? <Match top={ matches[1].top } bottom={ matches[1].bottom } inProgress={ !matches[1].winnerPos } winnerPos={ matches[0].winnerPos } /> : "" }
             </div>
             <div className="connector"></div>
         </div>
