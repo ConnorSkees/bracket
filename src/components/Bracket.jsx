@@ -47,7 +47,7 @@ class Bracket extends Component {
               <Match top={ matches[0].top } bottom={ matches[0].bottom } inProgress={ !matches[0].winnerPos } winnerPos={ matches[0].winnerPos }/>
               { matches.length > 1 ? <Match top={ matches[1].top } bottom={ matches[1].bottom } inProgress={ !matches[1].winnerPos } winnerPos={ matches[0].winnerPos } /> : "" }
             </div>
-            <div className="connector"></div>
+            { matches[0] === teams[teams.length-1][0] ? "" : <div className="connector"></div> }
         </div>
     )
   }
