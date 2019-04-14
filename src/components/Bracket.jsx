@@ -3,31 +3,6 @@ import Match from './Match'
 
 const uuidv4 = require('uuid/v4');
 
-const teams = [
-  [
-    {'top': 'Lousvillle', 'bottom': 'NC A&T', 'winnerPos': 'top'},
-    {'top': 'Colorado State', 'bottom': 'Missouri', 'winnerPos': 'top'},
-    {'top': 'Oklahoma State', 'bottom': 'Oregon', 'winnerPos': 'top'},
-    {'top': 'Saint Louis', 'bottom': 'New Mexico State', 'winnerPos': 'top'},
-    {'top': 'Memphis', 'bottom': 'St. Mary\'s', 'winnerPos': 'top'},
-    {'top': 'Michigan State', 'bottom': 'Valparaiso', 'winnerPos': 'top'},
-    {'top': 'Creighton', 'bottom': 'Cincinnati', 'winnerPos': 'top'},
-    {'top': 'Duke', 'bottom': 'Albany', 'winnerPos': 'top'},
-  ],
-  [
-    {'top': 'Lousville', 'bottom': 'Colorado State', 'winnerPos': 'top'},
-    {'top': 'Oklahoma State', 'bottom': 'Saint Louis', 'winnerPos': 'top'},
-    {'top': 'Memphis', 'bottom': 'Michigan State', 'winnerPos': 'top'},
-    {'top': 'Creighton', 'bottom': 'Duke', 'winnerPos': 'top'},
-  ],
-  [
-    {'top': 'Lousville', 'bottom': 'Oklahoma State', 'winnerPos': 'top'},
-    {'top': 'Memphis', 'bottom': 'Creighton', 'winnerPos': 'top'},
-  ],
-  [
-    {'top': 'Lousville', 'bottom': 'Memphis'},
-  ],
-]
 
 class Bracket extends Component {
   state = {};
