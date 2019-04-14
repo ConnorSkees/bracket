@@ -225,9 +225,22 @@
     margin-top: 30em
 }
 
+
 .v2-bracket .bracket__region .bracket__round:nth-child(4) {
     margin-top: 33em;
     margin-left: -9.8em
+}
+
+.v2-bracket .bracket__region .bracket__round:nth-child(5) {
+    margin-top: 58.9em;
+}
+
+.v2-bracket .bracket__region .bracket__round:nth-child(5) .v2-matchup:not(:first-child) {
+  margin-top: 123em;
+}
+
+.v2-bracket .bracket__region .bracket__round:nth-child(6) {
+  margin-top: 123.6em;
 }
 
 .v2-bracket .bracket__round {
@@ -337,6 +350,10 @@
 .v2-bracket .bracket__region .bracket__round:nth-child(4) {
     margin-top: 27.4em;
     margin-left: -6.8em
+}
+
+.v2-bracket .bracket__region .bracket__round:nth-child(4) .group:not(:first-child) {
+  margin-top: 56.6em;
 }
 
 .v2-bracket .bracket__region .bracket__round:nth-child(4) .v2-matchup:not(:first-child) {
