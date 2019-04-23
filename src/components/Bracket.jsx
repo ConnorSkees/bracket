@@ -44,6 +44,46 @@ function generateBracket(teamCount) {
 
 class Bracket extends Component {
   state = {};
+
+  _pushAmount(arr, amt) {
+    for(let i=0; i < amt; i++) {
+      arr.unshift({ 'top': '', 'bottom': '' });
+    }
+    return arr;
+  }
+
+  _restructureTeams(teams) {
+      let len = teams[0].length*2;
+      let matchCounts = generateBracket(len);
+
+      for (let key in matchCounts){
+        let thisRound = teams[key-1];
+
+        if (!thisRound){
+          console.log(key);
+          teams[key-1] = this._pushAmount([], matchCounts[key]);
+
+        } else if (thisRound.length < matchCounts[key]) {
+          console.log(thisRound);
+          teams[key-1] = this._pushAmount(thisRound, matchCounts[key]-teams[key-1].length);
+
+        } else if (thisRound.length > matchCounts[key]) {
+          let difference = thisRound.length-matchCounts[key];
+          // console.log(key, difference);
+          teams[key-1] = thisRound.slice(0, thisRound.length-difference);
+          if (teams[key]) {
+            console.log(teams[key]);
+            // teams[key] = thisRound.slice(thisRound.length-difference, thisRound.length)
+          } else {
+            teams[key] = thisRound.slice(thisRound.length-difference, thisRound.length)
+          }
+        } else if (thisRound.length === matchCounts[key]) {
+          // console.log(thisRound);
+        }
+      }
+    return teams;
+  }
+
   _groupIntoColumns(teams) {
     let groups = []
     for(let i=0; i< teams.length;){
@@ -66,13 +106,15 @@ class Bracket extends Component {
   }
 
   render() {
+    let { teams, title } = this.props;
+    let structuredTeams = this._restructureTeams(teams);
     return (
       <div className="ui__popup--container">
           <div className="bracket-view showing-bracket">
               <div className="bracket--full__wrapper">
                   <div className="v2-bracket bracket__content">
                       <div className="bracket__region">
-                        { teams.map(team => {
+                        { structuredTeams.map(team => {
                           return (
                             <div key={ uuidv4() } className="bracket__round">
                               <div className="matchups">
