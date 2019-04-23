@@ -125,7 +125,7 @@ class Bracket extends Component {
                           )
                         }) }
                         <div className="region__name">
-                          <h3>{ this.props.title || "Placeholder Title" }</h3>
+                          <h3>{ title || "Placeholder Title" }</h3>
                         </div>
                     </div>
                   </div>
