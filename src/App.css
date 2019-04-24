@@ -289,7 +289,7 @@ input[type=text]:not(:focus):hover {
     width: 136em;
 }
 
-.v2-bracket .bracket__region {
+.bracket__region {
     position: absolute;
     top: 0;
     padding-top: 5em;
@@ -298,7 +298,7 @@ input[type=text]:not(:focus):hover {
     display: flex
 }
 
-.v2-bracket .bracket__region .region__name {
+.bracket__region .region__name {
     height: 5em;
     top: 3.33333em;
     position: absolute;
@@ -307,32 +307,32 @@ input[type=text]:not(:focus):hover {
     background-color: rgba(255, 255, 255, 0);
 }
 
-.v2-bracket .bracket__region:nth-child(odd) .region__name {
+.bracket__region:nth-child(odd) .region__name {
     left: 0
 }
 
-.v2-bracket .bracket__region .bracket__round:nth-child(2) {
+.bracket__region .bracket__round:nth-child(2) {
     margin-top: 4.5em
 }
 
-.v2-bracket .bracket__region .bracket__round:nth-child(2) .group:nth-child(2),.v2-bracket .bracket__region .bracket__round:nth-child(2) .v2-matchup:not(:first-child) {
+.bracket__region .bracket__round:nth-child(2) .group:nth-child(2),.v2-bracket .bracket__region .bracket__round:nth-child(2) .v2-matchup:not(:first-child) {
     margin-top: 11em
 }
 
-.v2-bracket .bracket__region .bracket__round:nth-child(3) {
+.bracket__region .bracket__round:nth-child(3) {
     margin-top: 14em
 }
-.v2-bracket .bracket__region .bracket__round:nth-child(3) .v2-matchup:not(:first-child) {
+
+.bracket__region .bracket__round:nth-child(3) .v2-matchup:not(:first-child) {
     margin-top: 30em
 }
 
-
-.v2-bracket .bracket__region .bracket__round:nth-child(4) {
+.bracket__region .bracket__round:nth-child(4) {
     margin-top: 33em;
     margin-left: -9.8em
 }
 
-.v2-bracket .bracket__region .bracket__round:nth-child(5) {
+.bracket__region .bracket__round:nth-child(5) {
     margin-top: 58.9em;
 }
 
@@ -348,7 +348,7 @@ input[type=text]:not(:focus):hover {
     width: calc(19em + 17px)
 }
 
-.v2-bracket .bracket__round .group {
+.bracket__round .group {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -358,30 +358,30 @@ input[type=text]:not(:focus):hover {
     flex-direction: row
 }
 
-.v2-bracket .bracket__round .group .col {
+.bracket__round .group .col {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 0%;
     flex: 1 1 0%;
     max-width: 19em;
 }
 
-.v2-bracket .bracket__round .group .v2-matchup {
+.bracket__round .group .v2-matchup {
     margin-top: 0;
 }
 
-.v2-bracket .bracket__round .group .v2-matchup:not(:first-child) {
+.bracket__round .group .v2-matchup:not(:first-child) {
     margin-top: 1em;
 }
 
-.v2-bracket .bracket__round .group:not(:first-child):not(.single) {
+.bracket__round .group:not(:first-child):not(.single) {
     margin-top: 2em;
 }
 
-.v2-bracket .bracket__region .bracket__round:first-child .single {
+.bracket__region .bracket__round:first-child .single {
   margin-top: 5.7em;
 }
 
-.v2-bracket .bracket__round .connector {
+.bracket__round .connector {
     position: relative;
     margin-top: 4em;
     margin-bottom: calc(4em - 1px);
@@ -392,7 +392,7 @@ input[type=text]:not(:focus):hover {
     color: #979797;
 }
 
-.v2-bracket .bracket__round .connector:after,.v2-bracket .bracket__round .connector:before {
+.bracket__round .connector:after,.v2-bracket .bracket__round .connector:before {
     content: "";
     background-color: currentColor;
     position: absolute;
