@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import Bracket from './components/Bracket'
 
 const uuidv4 = require('uuid/v4');
