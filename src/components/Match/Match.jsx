@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import MdCheckCircle from 'react-icons/lib/md/check-circle';
-import MdCancel from 'react-icons/lib/md/cancel';
+import WinIcon from '../WinIcon';
+import LoseIcon from '../LoseIcon';
 
 class Match extends Component {
   state = {};
@@ -8,7 +8,7 @@ class Match extends Component {
   renderBottom() {
     let { bottom, inProgress, winnerPos } = this.props;
     let rowClass = winnerPos === 'bottom' ? "team__row winner" : "team__row loser";
-    let icon = winnerPos === 'bottom' ? <MdCheckCircle style={{ color: "green", opacity: .7 }} /> : <MdCancel style={{ color: "red" }}/>
+    let icon = winnerPos === 'bottom' ? <WinIcon /> : <LoseIcon />
 
     if (bottom && !inProgress){
       return (
@@ -27,7 +27,7 @@ class Match extends Component {
   renderTop() {
     let { top, inProgress, winnerPos } = this.props;
     let rowClass = winnerPos === 'top' ? "team__row winner" : "team__row loser";
-    let icon = winnerPos === 'top' ? <MdCheckCircle style={{ color: "green", opacity: .7 }} /> : <MdCancel style={{ color: "red" }}/>
+    let icon = winnerPos === 'top' ? <WinIcon /> : <LoseIcon />
     if (top && !inProgress){
       return (
         <div className={ rowClass }>
