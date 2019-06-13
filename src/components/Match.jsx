@@ -13,7 +13,7 @@ class Match extends Component {
     if (bottom && !inProgress){
       return (
         <div className={ rowClass }>
-            <div className="text flx1">
+            <div className="text">
                 <div className="team__picked">
                 { icon } { bottom.toUpperCase() }
                 </div>
@@ -31,7 +31,7 @@ class Match extends Component {
     if (top && !inProgress){
       return (
         <div className={ rowClass }>
-            <div className="text flx1">
+            <div className="text">
                 <div className="team__picked">
                   { icon } { top.toUpperCase() }
                 </div>
@@ -48,14 +48,14 @@ class Match extends Component {
       return (
         <React.Fragment>
           <div className="team__row">
-              <div className="text flx1">
+              <div className="text">
                   <div className="team__picked">
                       { top.toUpperCase() }
                   </div>
               </div>
           </div>
           <div className="team__row">
-              <div className="text flx1">
+              <div className="text">
                   <div className="team__picked">
                       { bottom.toUpperCase() }
                   </div>
