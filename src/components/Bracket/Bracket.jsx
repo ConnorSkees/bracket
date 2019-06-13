@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Match from './Match'
+import Match from '../Match';
+import './styles.scss';
 
 const uuidv4 = require('uuid/v4');
 
