@@ -10,7 +10,7 @@
 }
 
 .loser {
-  background-color: #e1e1e5;
+  background-color: $loser-background;
 
   & > * {
     opacity: .5;
@@ -127,10 +127,10 @@
                   @include transition(.28s);
                   cursor: pointer;
                   pointer-events: auto;
-                  background-color: #e1e1e5;
+                  background-color: $loser-background;
 
                   &:hover {
-                    background-color: rgb(200,200,200);
+                    background-color: $loser-background-hover;
                   }
                 }
 
@@ -138,10 +138,10 @@
                   @include transition(.28s);
                   cursor: pointer;
                   pointer-events: auto;
-                  background-color: #fff;
+                  background-color: $winner-background;
 
                   &:hover {
-                    background-color: rgb(238,238,238);
+                    background-color: $winner-background-hover;
                   }
                 }
             }
