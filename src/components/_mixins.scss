@@ -1,0 +1,15 @@
+@mixin prefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+
+    #{$property}: $value;
+  }
+}
+
+@mixin transition($duration) {
+  transition-duration: $duration;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-property: all;
+}

@@ -1,106 +1,5 @@
-input[type=text] {
-  padding: 1.5rem;
-  border-radius: 50;
-  border: none;
-  width: 50%;
-  min-width: 150px;
-  outline: none;
-  transition-duration: .28s;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
-  transition-property: all;
-  background-color: #fff;
-
-  &:focus {
-    -webkit-box-shadow: 0px 0px 41px 0px rgba(0,0,0,0.25);
-    -moz-box-shadow: 0px 0px 41px 0px rgba(0,0,0,0.25);
-    box-shadow: 0px 0px 41px 0px rgba(0,0,0,0.25);
-
-    border: 1px solid #ccc;
-  }
-
-  &:not(:focus):hover {
-    background: #eee;
-  }
-}
-
-label {
-  display: block;
-  font-size: 1.17em;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
-  font-family: Geogrotesque,Geo Grotesque,GeoGrotesque,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Droid Sans,Helvetica Neue,sans-serif;
-  color: #979797;
-}
-
-.button {
-  margin: 0;
-  /* border-radius: 100px; */
-  border: none;
-  width: 20px;
-  height: 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  outline: none;
-  transition-duration: .28s;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
-  transition-property: all;
-
-  &:first-of-type {
-    margin-left: 15px;
-    border-right: 1px solid #eee;
-  }
-
-  &:not(:last-of-type) {
-    border-right: 1px solid #eee;
-  }
-
-  &::after {
-    content: "";
-    background: red;
-    height: 100px;
-    width: 100px;
-  }
-
-  &-positive {
-    &:active {
-      background-color: #729f72;
-    }
-
-    &:hover:not(:active) {
-      background-color: #90c690;
-    }
-  }
-
-  &-negative {
-    &:active {
-      background-color: #c34141;
-    }
-    &:hover:not(:active) {
-      background-color: #f19a9a;
-    }
-  }
-
-  &-preview {
-    width: auto;
-  }
-}
-
-.team-label-container {
-  width: 50%;
-  min-width: 150px;
-
-  & > * {
-    display: inline-block;
-  }
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
-}
+@import "../mixins";
+@import "../classes";
 
 .ui__popup--container>* {
     overflow: hidden;
@@ -109,34 +8,16 @@ label {
     width: 100%;
 }
 
-.v2-matchup {
-    display: block;
-    text-decoration: none;
-    z-index: 0;
-
-    &:not(.live) .matchup__container{
-      cursor: default;
-      overflow: hidden;
-
-      &::after {
-        -webkit-animation: none;
-        animation: none;
-        opacity: 0;
-      }
-    }
-}
-
 .matchup__container {
+    @include prefix((
+      box-shadow: 0 .1rem .2rem rgba(0,0,0,.19999999999999996)
+    ), webkit moz);
+    @extend .display-flex;
     background-color: #fff;
     max-width: 19em;
     border-radius: .6rem;
     border-color: #d8d8d8;
     position: relative;
-    -webkit-box-shadow: 0 .1rem .2rem rgba(0,0,0,.19999999999999996);
-    box-shadow: 0 .1rem .2rem rgba(0,0,0,.19999999999999996);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     pointer-events: none;
 
     &::after {
@@ -155,16 +36,11 @@ label {
     }
 
     & .matchup__teams {
-      -webkit-box-flex: 1;
-      -ms-flex: 1 1 0%;
-      flex: 1 1 0%;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
+      @include prefix((flex-direction: column), ms)
+      @extend .display-flex;
+      @extend .flx1;
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-      flex-direction: column;
       -webkit-box-pack: center;
       -ms-flex-pack: center;
       justify-content: center;
@@ -173,9 +49,7 @@ label {
       color: #000;
 
       & .team__row {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
+        @extend .display-flex;
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
@@ -204,13 +78,11 @@ label {
         }
 
         & .text {
+          @extend .flx1;
           font-size: 1.4em;
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
-          -webkit-box-flex: 1;
-          -ms-flex: 1 1 0%;
-          flex: 1 1 0%
         }
       }
     }
@@ -222,16 +94,13 @@ label {
 
 
 .team__row {
+    @include prefix((transition: background-color .2s ease-in-out), webkit)
     cursor: default;
-    -webkit-transition: background-color .2s ease-in-out;
-    transition: background-color .2s ease-in-out;
 
     &.loser {
+      @include transition(.28s);
       cursor: pointer;
       pointer-events: auto;
-      transition-duration: .28s;
-      transition-timing-function: cubic-bezier(.4,0,.2,1);
-      transition-property: background-color;
       background-color: #e1e1e5;
 
       &:hover {
@@ -240,11 +109,9 @@ label {
     }
 
     &:not(.loser) {
+      @include transition(.28s);
       cursor: pointer;
       pointer-events: auto;
-      transition-duration: .28s;
-      transition-timing-function: cubic-bezier(.4,0,.2,1);
-      transition-property: background-color;
       background-color: #fff;
 
       &:hover {
@@ -262,14 +129,6 @@ label {
 }
 
 .winner {}
-
-.ui__popup--container .bracket-view [class*="--full__wrapper"] {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
 
 .bracket-view {
 
@@ -289,6 +148,11 @@ label {
       -ms-touch-action: pan-x pan-y;
       touch-action: pan-x pan-y;
       scrollbar-width: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
 
       &::-webkit-scrollbar {
           display: none
@@ -321,13 +185,11 @@ label {
   width: 136em;
 
   & .bracket__region {
+    @extend .display-flex;
     height: auto !important;
     position: absolute;
     top: 0;
     padding-top: 5em;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
 
     &:nth-child(odd) .region__name {
         left: 0;
@@ -350,9 +212,7 @@ label {
         }
 
         & .group {
-          display: -webkit-box;
-          display: -ms-flexbox;
-          display: flex;
+          @extend .display-flex;
           -webkit-box-orient: horizontal;
           -webkit-box-direction: normal;
           -ms-flex-direction: row;
@@ -363,7 +223,21 @@ label {
           }
 
           & .v2-matchup {
+            display: block;
+            text-decoration: none;
             margin-top: 0;
+            z-index: 0;
+
+            &:not(.live) .matchup__container{
+              cursor: default;
+              overflow: hidden;
+
+              &::after {
+                -webkit-animation: none;
+                animation: none;
+                opacity: 0;
+              }
+            }
 
             &:not(:first-child) {
                 margin-top: 1em;
@@ -371,9 +245,7 @@ label {
           }
 
           & .col {
-            -webkit-box-flex: 1;
-            -ms-flex: 1 1 0%;
-            flex: 1 1 0%;
+            @extend .flx1;
             max-width: 15.2em
           }
 
@@ -489,25 +361,20 @@ html {
 }
 
 body {
+    @include prefix((
+      user-select: none,
+      text-size-adjust: none,
+      touch-callout: none
+    ), webkit moz ms)
     color: #979797;
     font-size: 100%;
     line-height: 1;
     margin: 0;
     padding: 0;
-    -ms-touch-callout: none;
-    -webkit-touch-callout: none;
-    -webkit-text-size-adjust: none;
-    -moz-text-size-adjust: none;
-    -ms-text-size-adjust: none;
-    text-size-adjust: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-tap-highlight-color: rgba(255,255,255,0);
     -ms-touch-action: pan-x pan-y;
     touch-action: pan-x pan-y;
-    /* -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; */
     word-wrap: break-word;
     background-color: #f0eff4;
     font-family: Geogrotesque,Geo Grotesque,GeoGrotesque,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Droid Sans,Helvetica Neue,sans-serif;
@@ -523,24 +390,24 @@ html, body, #root, .ui__popup--container {
 }
 
 /* Dark Mode */
-/* body {
-  background-color: #222222;
-}
-
-a * {
-  color: #8db2e5;
-  background-color: #3d3c3c !important;
-}
-
-.matchup__container {
-  border-color: rgb(100,100,100);
-}
-
-.connector, .connector:after, .connector:before {
-  color: rgb(100,100,100);
-  border-color: rgb(100,100,100);
-}
-
-.region__name {
-  color: #fff;
-} */
+// body {
+//   background-color: #222222;
+// }
+//
+// a * {
+//   color: #8db2e5;
+//   background-color: #3d3c3c !important;
+// }
+//
+// .matchup__container {
+//   border-color: rgb(100,100,100);
+// }
+//
+// .connector, .connector::after, .connector::before {
+//   color: rgb(100,100,100);
+//   border-color: rgb(100,100,100);
+// }
+//
+// .region__name {
+//   color: #fff;
+// }
