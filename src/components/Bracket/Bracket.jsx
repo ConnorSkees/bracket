@@ -99,8 +99,8 @@ class Bracket extends Component {
     return (
         <div key={ uuidv4() } className={ matches.length === 1 ? "group single" : "group"}>
             <div className="col">
-              <Match top={ matches[0].top } bottom={ matches[0].bottom } inProgress={ !matches[0].winnerPos } winnerPos={ matches[0].winnerPos }/>
-              { matches.length > 1 ? <Match top={ matches[1].top } bottom={ matches[1].bottom } inProgress={ !matches[1].winnerPos } winnerPos={ matches[1].winnerPos } /> : "" }
+              <Match top={ matches[0].top } bottom={ matches[0].bottom } winnerPos={ matches[0].winnerPos }/>
+              { matches.length > 1 ? <Match top={ matches[1].top } bottom={ matches[1].bottom } winnerPos={ matches[1].winnerPos } /> : "" }
             </div>
             { matches[0] === teams[teams.length-1][0] ? "" : <div className="connector"></div> }
         </div>
