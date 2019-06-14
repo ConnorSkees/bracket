@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.scss';
-import Bracket from './components/Bracket'
+import Bracket from '../Bracket';
+import "./styles.scss";
 
 const uuidv4 = require('uuid/v4');
 
@@ -30,7 +30,7 @@ const teams = [
   // ],
 ]
 
-class App extends Component {
+class Sandbox extends Component {
   state = {
     firstRoundTeams: [
       {uuid: uuidv4(), value: ""}
@@ -108,4 +108,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Sandbox;
