@@ -1,12 +1,14 @@
-$font-family: Geogrotesque,Geo Grotesque,GeoGrotesque,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Droid Sans,Helvetica Neue,sans-serif;
-$font-color: #979797;
-$background: #f0eff4;
+$font-family: Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue, sans-serif;
+$team-font-color: #000;
+$region-font-color: #979797;
+
+$divider-color: #d8d8d8;
+$connector-color: #979797;
 
 $win-icon-color: green;
 $lose-icon-color: red;
 
-$connector-color: #979797;
-
+$background: #f0eff4;
 $loser-background: #e1e1e5;
 $loser-background-hover: rgb(200,200,200);
 $winner-background: #fff;

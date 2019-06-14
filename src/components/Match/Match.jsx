@@ -27,17 +27,13 @@ class Match extends Component {
 
                 <div className={ topClass }>
                     <div className="text">
-                        <div className="team-picked">
                           { topIcon }  { top.toUpperCase() }
-                        </div>
                     </div>
                 </div>
                 { isSolo ? "" : (
                   <div className={ btmClass }>
                     <div className="text">
-                      <div className="team-picked">
                         { btmIcon }  { bottom.toUpperCase() }
-                      </div>
                     </div>
                   </div>)
                 }

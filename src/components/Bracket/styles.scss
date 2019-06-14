@@ -9,6 +9,34 @@
     width: 100%;
 }
 
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 0
+    }
+
+    50%,60%,70% {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 0
+    }
+
+    50%,60%,70% {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
 .loser {
   background-color: $loser-background;
 
@@ -55,7 +83,7 @@
           background-color: #fff;
           max-width: 15.2em;
           border-radius: .6rem;
-          border-color: #d8d8d8;
+          border-color: $divider-color;
           position: relative;
           pointer-events: none;
 
@@ -71,7 +99,8 @@
               -webkit-animation: fadeOut 2.64s ease-out infinite;
               animation: fadeOut 2.64s ease-out infinite;
               border: .05em solid #e41e2b;
-              border-radius: inherit
+              border-radius: inherit;
+              border: 2px solid red;
           }
 
           & .matchup-teams {
@@ -85,7 +114,7 @@
             justify-content: center;
             border-color: inherit;
             height: calc(8em - 16px);
-            color: #000;
+            color: $team-font-color;
 
             & .team-row {
                 @include prefix((transition: background-color .2s ease-in-out), webkit)
@@ -109,18 +138,15 @@
                   border-bottom-right-radius: calc(.6rem - 1px)
                 }
 
-                & .team-picked {
-                  position: relative;
-                  display: inline-block;
-                  vertical-align: middle;
-                }
-
                 & .text {
                   @extend .flx1;
                   font-size: 1.4em;
                   white-space: nowrap;
                   text-overflow: ellipsis;
                   overflow: hidden;
+                  position: relative;
+                  display: inline-block;
+                  vertical-align: middle;
                 }
 
                 &.loser {
@@ -326,27 +352,3 @@
       }
   }
 }
-
-
-/* Dark Mode */
-// body {
-//   background-color: #222222;
-// }
-//
-// a * {
-//   color: #8db2e5;
-//   background-color: #3d3c3c !important;
-// }
-//
-// .matchup-container {
-//   border-color: rgb(100,100,100);
-// }
-//
-// .connector, .connector::after, .connector::before {
-//   color: rgb(100,100,100);
-//   border-color: rgb(100,100,100);
-// }
-//
-// .region-name {
-//   color: #fff;
-// }
