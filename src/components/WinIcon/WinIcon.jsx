@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import MdCheckCircle from 'react-icons/lib/md/check-circle';
+import "./styles.scss";
 
 class WinIcon extends Component {
   state = {};
 
   render() {
     return (
-      <MdCheckCircle style={{ color: "green", opacity: .7 }}/>
+      <MdCheckCircle className={ "win-icon" } />
     )
   };
 }
