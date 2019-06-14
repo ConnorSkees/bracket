@@ -22,12 +22,12 @@ class Match extends Component {
 
     return (
       <div className="v2-matchup">
-          <div className="matchup__container">
+          <div className="matchup-container">
               <div className="matchup-teams">
 
                 <div className={ topClass }>
                     <div className="text">
-                        <div className="team__picked">
+                        <div className="team-picked">
                           { topIcon }  { top.toUpperCase() }
                         </div>
                     </div>
@@ -35,7 +35,7 @@ class Match extends Component {
                 { isSolo ? "" : (
                   <div className={ btmClass }>
                     <div className="text">
-                      <div className="team__picked">
+                      <div className="team-picked">
                         { btmIcon }  { bottom.toUpperCase() }
                       </div>
                     </div>

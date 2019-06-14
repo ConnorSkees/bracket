@@ -111,21 +111,21 @@ class Bracket extends Component {
     let { teams, title } = this.props;
     let structuredTeams = this._restructureTeams(teams);
     return (
-      <div className="ui__popup--container">
+      <div className="ui-popup-container">
           <div className="bracket-view showing-bracket">
-              <div className="bracket--full__wrapper">
-                  <div className="v2-bracket bracket__content">
-                      <div className="bracket__region">
+              <div className="bracket-full-wrapper">
+                  <div className="v2-bracket bracket-content">
+                      <div className="bracket-region">
                         { structuredTeams.map(team => {
                           return (
-                            <div key={ uuidv4() } className="bracket__round">
+                            <div key={ uuidv4() } className="bracket-round">
                               <div className="matchups">
                                 { this._groupIntoColumns(team).map(this.renderTeam) }
                               </div>
                             </div>
                           )
                         }) }
-                        <div className="region__name">
+                        <div className="region-name">
                           <h3>{ title || "Placeholder Title" }</h3>
                         </div>
                     </div>

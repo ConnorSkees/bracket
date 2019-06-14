@@ -2,7 +2,7 @@
 @import "../classes";
 @import "../variables";
 
-.ui__popup--container>* {
+.ui-popup-container>* {
     overflow: hidden;
     position: relative;
     height: 100%;
@@ -21,11 +21,11 @@
 
 .bracket-view {
 
-  & .bracket__content {
+  & .bracket-content {
       margin: 0 5.4em;
   }
 
-  & .bracket--full__wrapper {
+  & .bracket-full-wrapper {
       visibility: visible;
       display: block;
       overflow-y: auto;
@@ -47,7 +47,7 @@
           display: none
       }
 
-      & .matchup__container {
+      & .matchup-container {
           @include prefix((
             box-shadow: 0 .1rem .2rem rgba(0,0,0,.19999999999999996)
           ), webkit moz);
@@ -74,7 +74,7 @@
               border-radius: inherit
           }
 
-          & .matchup__teams {
+          & .matchup-teams {
             @include prefix((flex-direction: column), ms)
             @extend .display-flex;
             @extend .flx1;
@@ -87,7 +87,7 @@
             height: calc(8em - 16px);
             color: #000;
 
-            & .team__row {
+            & .team-row {
                 @include prefix((transition: background-color .2s ease-in-out), webkit)
                 @extend .display-flex;
                 cursor: default;
@@ -109,7 +109,7 @@
                   border-bottom-right-radius: calc(.6rem - 1px)
                 }
 
-                & .team__picked {
+                & .team-picked {
                   position: relative;
                   display: inline-block;
                   vertical-align: middle;
@@ -134,7 +134,11 @@
                   }
                 }
 
-                &:not(.loser) {
+                &.solo {
+                  height: 100%;
+                }
+
+                &:not(.loser) { // winner and in progress
                   @include transition(.28s);
                   cursor: pointer;
                   pointer-events: auto;
@@ -158,18 +162,18 @@
         font-size: 10px;
         width: 136em;
 
-        & .bracket__region {
+        & .bracket-region {
           @extend .display-flex;
           height: auto !important;
           position: absolute;
           top: 0;
           padding-top: 5em;
 
-          &:nth-child(odd) .region__name {
+          &:nth-child(odd) .region-name {
               left: 0;
           }
 
-          & .region__name {
+          & .region-name {
               height: 5em;
               top: 3.33333em;
               position: absolute;
@@ -178,7 +182,7 @@
               background-color: rgba(255, 255, 255, 0);
           }
 
-          & .bracket__round {
+          & .bracket-round {
               width: calc(15.2em + 16px);
 
               &:first-child .single {
@@ -202,7 +206,7 @@
                   margin-top: 0;
                   z-index: 0;
 
-                  &:not(.live) .matchup__container{
+                  &:not(.live) .matchup-container{
                     cursor: default;
                     overflow: hidden;
 
@@ -334,7 +338,7 @@
 //   background-color: #3d3c3c !important;
 // }
 //
-// .matchup__container {
+// .matchup-container {
 //   border-color: rgb(100,100,100);
 // }
 //
@@ -343,6 +347,6 @@
 //   border-color: rgb(100,100,100);
 // }
 //
-// .region__name {
+// .region-name {
 //   color: #fff;
 // }
