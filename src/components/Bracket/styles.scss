@@ -2,13 +2,6 @@
 @import "../classes";
 @import "../variables";
 
-.ui-popup-container>* {
-    overflow: hidden;
-    position: relative;
-    height: 100%;
-    width: 100%;
-}
-
 @-webkit-keyframes fadeOut {
     0% {
         opacity: 0
@@ -164,15 +157,25 @@
                   height: 100%;
                 }
 
+                &.focused {
+                  &.loser {
+                    background-color: $loser-background-hover;
+                  }
+
+                  &.winner {
+                    background-color: $winner-background-hover;
+                  }
+
+                  &:not(.winner):not(.loser) {
+                    background-color: $default-background-hover;
+                  }
+                }
+
                 &:not(.loser) { // winner and in progress
                   @include transition(.28s);
                   cursor: pointer;
                   pointer-events: auto;
                   background-color: $winner-background;
-
-                  &:hover {
-                    background-color: $winner-background-hover;
-                  }
                 }
             }
           }
@@ -226,7 +229,7 @@
                   margin-top: 2em;
                 }
 
-                & .v2-matchup {
+                & .match {
                   display: block;
                   text-decoration: none;
                   margin-top: 0;
@@ -286,7 +289,7 @@
               &:nth-child(2) {
                 margin-top: 3.7em;
 
-                & .group:not(:first-child), & .v2-matchup:not(:first-child) {
+                & .group:not(:first-child), & .match:not(:first-child) {
                   margin-top: 9.4em;
                 }
               }
@@ -299,7 +302,7 @@
                     margin-top: 25.2em;
                 }
 
-                & .v2-matchup:not(:first-child) {
+                & .match:not(:first-child) {
                     margin-top: 25.2em;
                 }
               }
@@ -312,7 +315,7 @@
                     margin-top: 56.6em;
                   }
 
-                  & .v2-matchup:not(:first-child) {
+                  & .match:not(:first-child) {
                      margin-top: 56.6em;
                  }
               }
@@ -321,11 +324,11 @@
                 margin-top: 58.9em;
                 margin-left: -6.8em;
 
-                & .v2-matchup:not(:first-child) {
+                & .match:not(:first-child) {
                   margin-top: 123em;
                 }
 
-                & .group:not(:first-child), & .v2-matchup:not(:first-child) {
+                & .group:not(:first-child), & .match:not(:first-child) {
                   margin-top: 119.62em;
                 }
               }
@@ -334,11 +337,11 @@
                 margin-top: 121.9em;
                 margin-left: -6.8em;
 
-                & .group:not(:first-child), & .v2-matchup:not(:first-child) {
+                & .group:not(:first-child), & .match:not(:first-child) {
                   margin-top: 119.62em;
                 }
 
-                & .v2-matchup:not(:first-child) {
+                & .match:not(:first-child) {
                   margin-top: 245.6em;
                 }
               }

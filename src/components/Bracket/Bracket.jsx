@@ -44,7 +44,10 @@ function generateBracket(teamCount) {
 }
 
 class Bracket extends Component {
-  state = {};
+  state = {
+    focusedValue: "1095ea83-4bef-4457-9e3c-3ca762de1577",
+    teams: this.props.teams
+  };
 
   _pushAmount(arr, amt) {
     for(let i=0; i < amt; i++) {
@@ -94,22 +97,34 @@ class Bracket extends Component {
     return groups;
   }
 
-  renderTeam = matches => {
-    let { teams } = this.props;
+  updateFocus = (newFocusedValue) => {
+    let { focusedValue } = this.state;
+    if (newFocusedValue !== "" && focusedValue !== newFocusedValue) {
+      this.setState({ focusedValue: newFocusedValue })
+    }
+  }
+
+  renderMatch = matches => {
+    let { focusedValue, teams } = this.state;
+    let isFinalMatch = matches[0] === teams[teams.length-1][0];
     return (
-        <div key={ uuidv4() } className={ matches.length === 1 ? "group single" : "group"}>
+        <div key={ uuidv4() } className={ `group ${matches.length === 1 ? "single" : ""}`}>
             <div className="col">
-              <Match top={ matches[0].top } bottom={ matches[0].bottom } winnerPos={ matches[0].winnerPos }/>
-              { matches.length > 1 ? <Match top={ matches[1].top } bottom={ matches[1].bottom } winnerPos={ matches[1].winnerPos } /> : "" }
+              <Match handleMouseOver={ x => this.updateFocus(x) } focusedValue={ focusedValue } top={ matches[0].top } bottom={ matches[0].bottom } winnerPos={ matches[0].winnerPos }/>
+              { matches.length > 1
+                ? <Match handleMouseOver={ x => this.updateFocus(x) } focusedValue={ focusedValue } top={ matches[1].top } bottom={ matches[1].bottom } winnerPos={ matches[1].winnerPos } />
+                : ""
+              }
             </div>
-            { matches[0] === teams[teams.length-1][0] ? "" : <div className="connector"></div> }
+            { isFinalMatch ? "" : <div className="connector"></div> }
         </div>
     )
   }
 
   render() {
-    let { teams, title } = this.props;
-    let structuredTeams = this._restructureTeams(teams);
+    let { title, teams } = this.props;
+    let structuredTeams = teams;
+    // let structuredTeams = this._restructureTeams(teams);
     return (
       <div className="ui-popup-container">
           <div className="bracket-view showing-bracket">
@@ -120,7 +135,7 @@ class Bracket extends Component {
                           return (
                             <div key={ uuidv4() } className="bracket-round">
                               <div className="matchups">
-                                { this._groupIntoColumns(team).map(this.renderTeam) }
+                                { this._groupIntoColumns(team).map(this.renderMatch) }
                               </div>
                             </div>
                           )
