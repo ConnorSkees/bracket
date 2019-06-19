@@ -18,9 +18,16 @@ const teams = [
   ],
   [
     {'top': 'Lousville', 'bottom': 'Colorado State', 'winnerPos': 'bottom'},
-    {'top': 'Oklahoma State', 'bottom': '', 'winnerPos': 'top'},
-    // {'top': 'Memphis', 'bottom': 'Michigan State', 'winnerPos': 'top'},
-    // {'top': 'Creighton', 'bottom': 'Duke', 'winnerPos': 'top'},
+    {'top': 'Oklahoma State', 'bottom': 'g', 'winnerPos': 'top'},
+    {'top': 'Memphis', 'bottom': 'Michigan State', 'winnerPos': 'top'},
+    {'top': 'Creighton', 'bottom': 'Duke', 'winnerPos': 'top'},
+  ],
+  [
+    {'top': 'Lousville', 'bottom': 'Oklahoma State', 'winnerPos': 'top'},
+    {'top': 'Memphis', 'bottom': 'Creighton', 'winnerPos': 'top'},
+  ],
+  [
+    {'top': 'Lousville', 'bottom': 'Memphis'},
   ],
   // [
   //   {'top': 'Lousville', 'bottom': 'Oklahoma State', 'winnerPos': 'top'},
