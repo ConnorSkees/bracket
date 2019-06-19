@@ -58,7 +58,7 @@ class Sandbox extends Component {
     }
     return (
       <React.Fragment>
-        <div style={{ width: "60%", height: "80%", marginLeft: "30%", marginTop: "5%" }}>
+        <div className={ "sandbox-container" }>
           <div className={ "flex-column" }>
             <label htmlFor="title">Bracket Title</label>
             <input type="text" maxLength="22" id="title" placeholder="Bracket Title" />
