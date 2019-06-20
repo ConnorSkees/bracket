@@ -1,13 +1,13 @@
 {
-  "main.css": "/bracket/static/css/main.b5216a46.chunk.css",
-  "main.js": "/bracket/static/js/main.8f2a9dfd.chunk.js",
-  "main.js.map": "/bracket/static/js/main.8f2a9dfd.chunk.js.map",
+  "main.css": "/bracket/static/css/main.72320766.chunk.css",
+  "main.js": "/bracket/static/js/main.81284d9e.chunk.js",
+  "main.js.map": "/bracket/static/js/main.81284d9e.chunk.js.map",
   "runtime~main.js": "/bracket/static/js/runtime~main.eaf85ccb.js",
   "runtime~main.js.map": "/bracket/static/js/runtime~main.eaf85ccb.js.map",
-  "static/js/2.a2b8e500.chunk.js": "/bracket/static/js/2.a2b8e500.chunk.js",
-  "static/js/2.a2b8e500.chunk.js.map": "/bracket/static/js/2.a2b8e500.chunk.js.map",
+  "static/js/2.b3741c66.chunk.js": "/bracket/static/js/2.b3741c66.chunk.js",
+  "static/js/2.b3741c66.chunk.js.map": "/bracket/static/js/2.b3741c66.chunk.js.map",
   "index.html": "/bracket/index.html",
-  "precache-manifest.67049f20caabd0a935b5ebcccd022fb0.js": "/bracket/precache-manifest.67049f20caabd0a935b5ebcccd022fb0.js",
+  "precache-manifest.c4d14fd26406e8f5ec246e06a202b310.js": "/bracket/precache-manifest.c4d14fd26406e8f5ec246e06a202b310.js",
   "service-worker.js": "/bracket/service-worker.js",
-  "static/css/main.b5216a46.chunk.css.map": "/bracket/static/css/main.b5216a46.chunk.css.map"
+  "static/css/main.72320766.chunk.css.map": "/bracket/static/css/main.72320766.chunk.css.map"
 }
