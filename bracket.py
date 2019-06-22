@@ -2,10 +2,9 @@
 """
 Generate bracket layout from starting number of unique teams
 """
-
-
+from pprint import pprint
 import sys
-from typing import Dict
+from typing import Dict, List
 
 example_layouts = {
   2: {1: 1},
@@ -80,5 +79,38 @@ def generate_bracket(team_count: int) -> Dict[int, int]:
         round += 1
     return layout
 
+def format_bracket(teams: List[str] = None) -> List[List[Dict[str, str]]]:
+    if teams is None:
+        teams = [
+            "Duke",
+            "Albany",
+            "Colorado State",
+            "Harvard",
+            "Oklahoma State",
+            "Oregon",
+            "Saint Louis",
+            "New Mexico State",
+            "Memphis",
+            "St. Mary's",
+            "Michigan State",
+            "Valparaiso",
+            "Creighton",
+            "Cincinnati",
+        ]
+    structure = generate_bracket(len(teams))
+    rounds = {}
+    pos = 0
+    for round, num_of_teams in structure.items():
+        rounds[round] = []
+        num_of_teams *= 2
+        if len(teams[pos:num_of_teams+pos]) < num_of_teams:
+            for _ in range( num_of_teams - len(teams[pos:num_of_teams+pos]) ):
+                rounds[round] += ['']
+        rounds[round] += teams[pos:num_of_teams+pos]
+        pos += num_of_teams
+    return rounds
+
+
 if __name__ == "__main__":
-    print(generate_bracket(int(sys.argv[1])))
+    # print(generate_bracket(int(sys.argv[1])))
+    pprint(format_as_bracket())
