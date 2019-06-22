@@ -38,8 +38,6 @@
   }
 }
 
-.winner {}
-
 .bracket-view {
 
   & .bracket-content {
@@ -72,7 +70,7 @@
           @include prefix((
             box-shadow: 0 .1rem .2rem rgba(0,0,0,.19999999999999996)
           ), webkit moz);
-          @extend .display-flex;
+          @extend %display-flex;
           background-color: #fff;
           max-width: 15.2em;
           border-radius: .6rem;
@@ -97,9 +95,9 @@
           }
 
           & .matchup-teams {
-            @include prefix((flex-direction: column), ms)
-            @extend .display-flex;
-            @extend .flx1;
+            @include prefix((flex-direction: column), ms);
+            @extend %display-flex;
+            @extend %flx1;
             -webkit-box-orient: vertical;
             -webkit-box-direction: normal;
             -webkit-box-pack: center;
@@ -110,8 +108,8 @@
             color: $team-font-color;
 
             & .team-row {
-                @include prefix((transition: background-color .2s ease-in-out), webkit)
-                @extend .display-flex;
+                @include prefix((transition: background-color .2s ease-in-out), webkit);
+                @extend %display-flex;
                 cursor: default;
                 -webkit-box-align: center;
                 -ms-flex-align: center;
@@ -132,7 +130,7 @@
                 }
 
                 & .text {
-                  @extend .flx1;
+                  @extend %flx1;
                   font-size: 1.4em;
                   white-space: nowrap;
                   text-overflow: ellipsis;
@@ -192,7 +190,7 @@
         width: 136em;
 
         & .bracket-region {
-          @extend .display-flex;
+          @extend %display-flex;
           height: auto !important;
           position: absolute;
           top: 0;
@@ -219,7 +217,7 @@
               }
 
               & .group {
-                @extend .display-flex;
+                @extend %display-flex;
                 -webkit-box-orient: horizontal;
                 -webkit-box-direction: normal;
                 -ms-flex-direction: row;
@@ -252,7 +250,7 @@
                 }
 
                 & .col {
-                  @extend .flx1;
+                  @extend %flx1;
                   max-width: 15.2em
                 }
 

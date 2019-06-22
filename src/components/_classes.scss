@@ -1,10 +1,10 @@
-.display-flex {
+%display-flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.flx1 {
+%flx1 {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 0%;
   flex: 1 1 0%
