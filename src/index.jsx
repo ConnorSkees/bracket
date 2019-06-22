@@ -6,7 +6,7 @@ import './styles.scss';
 import * as serviceWorker from './serviceWorker';
 
 const root = document.getElementById('root');
-const teams = [
+const _teams = [
   [
     {'top': 'Duke', 'bottom': 'Albany', 'winnerPos': 'top'},
     {'top': 'Colorado State', 'bottom': 'Harvard', 'winnerPos': 'top'},
@@ -14,32 +14,25 @@ const teams = [
     {'top': 'Saint Louis', 'bottom': 'New Mexico State', 'winnerPos': 'top'},
     {'top': 'Memphis', 'bottom': 'St. Mary\'s', 'winnerPos': 'top'},
     {'top': 'Michigan State', 'bottom': 'Valparaiso', 'winnerPos': 'top'},
+    // {'top': 'Creighton', 'bottom': 'Cincinnati', 'winnerPos': 'top'},
+  ],
+  [
+    {'top': 'Duke', 'bottom': 'Colorado State', 'winnerPos': 'top'},
+    {'top': 'Oregon', 'bottom': 'Saint Louis', 'winnerPos': 'bottom'},
+    {'top': 'Memphis', 'bottom': 'Michigan State', 'winnerPos': 'top'},
     {'top': 'Creighton', 'bottom': 'Cincinnati', 'winnerPos': 'top'},
   ],
   [
-    {'top': 'Lousville', 'bottom': 'Colorado State', 'winnerPos': 'bottom'},
-    {'top': 'Oklahoma State', 'bottom': 'g', 'winnerPos': 'top'},
-    {'top': 'Memphis', 'bottom': 'Michigan State', 'winnerPos': 'top'},
-    {'top': 'Creighton', 'bottom': 'Duke', 'winnerPos': 'top'},
-  ],
-  [
-    {'top': 'Lousville', 'bottom': 'Oklahoma State', 'winnerPos': 'top'},
+    {'top': 'Duke', 'bottom': 'Saint Louis', 'winnerPos': 'top'},
     {'top': 'Memphis', 'bottom': 'Creighton', 'winnerPos': 'top'},
   ],
   [
-    {'top': 'Lousville', 'bottom': 'Memphis'},
+    {'top': 'Duke', 'bottom': 'Memphis', 'winnerPos': 'bottom'},
   ],
-  // [
-  //   {'top': 'Lousville', 'bottom': 'Oklahoma State', 'winnerPos': 'top'},
-  //   {'top': 'Memphis', 'bottom': 'Creighton', 'winnerPos': 'top'},
-  // ],
-  // [
-  //   {'top': 'Lousville', 'bottom': 'Memphis'},
-  // ],
 ]
 
 
-ReactDOM.render(<Bracket teams={teams}/>, root);
-// ReactDOM.render(<Sandbox />, root);
+// ReactDOM.render(<Bracket teams={_teams}/>, root);
+ReactDOM.render(<Sandbox />, root);
 
 serviceWorker.unregister();
