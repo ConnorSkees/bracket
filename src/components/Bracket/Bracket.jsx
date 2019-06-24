@@ -88,11 +88,10 @@ class Bracket extends Component {
     return teams;
   }
 
-  _groupIntoColumns(teams) {
+  groupIntoColumns(teams) {
     let groups = []
-    for(let i=0; i< teams.length;){
+    for(let i=0; i< teams.length; i += 2) {
       groups.push(teams.slice(i, i+2))
-      i += 2;
     }
     return groups;
   }
