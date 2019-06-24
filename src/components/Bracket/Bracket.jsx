@@ -5,6 +5,7 @@ import './styles.scss';
 const uuidv4 = require('uuid/v4');
 
 function generateBracket(teamCount) {
+  // takes number of teams and gives dict of `round_num: num_of_matches`
   let round = 1;
   let layout = {};
   let exceptions = {
@@ -46,46 +47,106 @@ function generateBracket(teamCount) {
 class Bracket extends Component {
   state = {
     focusedValue: "1095ea83-4bef-4457-9e3c-3ca762de1577",
-    teams: this.props.teams
+    bracketLayout: this.props.teams ? generateBracket(this.props.teams.length) : generateBracket(this.props.rounds[0].length),
+    rounds: this.props.rounds
   };
 
-  _pushAmount(arr, amt) {
-    for(let i=0; i < amt; i++) {
-      arr.unshift({ 'top': '', 'bottom': '' });
+  addMissingMatches = (rounds) => {
+    let { bracketLayout } = this.state;
+    let newRound = rounds;
+    for (const [round, numOfMatches] of Object.entries(bracketLayout)) {
+      if (rounds[round - 1] === undefined){
+        rounds[round - 1] = [];
+      }
+      let roundLength = rounds[round - 1].length;
+      if (roundLength < numOfMatches) {
+        for (let i = 0; i < numOfMatches - roundLength; i++){
+          newRound[round - 1].push({ 'top': '', 'bottom': '' });
+        }
+      } else if (roundLength > numOfMatches) {
+        console.error(`Too many teams in round ${round} (expected ${numOfMatches} but got ${roundLength})`);
+      }
     }
-    return arr;
+    return newRound;
   }
 
-  _restructureTeams(teams) {
-      let len = teams[0].length*2;
-      let matchCounts = generateBracket(len);
+  sortKeys(unordered) {
+    const ordered = {};
+    Object.keys(unordered).sort().forEach(function (key) {
+      ordered[key] = unordered[key];
+    });
+    return ordered;
+  }
 
-      for (let key in matchCounts){
-        let thisRound = teams[key-1];
-
-        if (!thisRound){
-          console.log(key);
-          teams[key-1] = this._pushAmount([], matchCounts[key]);
-
-        } else if (thisRound.length < matchCounts[key]) {
-          console.log(thisRound);
-          teams[key-1] = this._pushAmount(thisRound, matchCounts[key]-teams[key-1].length);
-
-        } else if (thisRound.length > matchCounts[key]) {
-          let difference = thisRound.length-matchCounts[key];
-          // console.log(key, difference);
-          teams[key-1] = thisRound.slice(0, thisRound.length-difference);
-          if (teams[key]) {
-            console.log(teams[key]);
-            // teams[key] = thisRound.slice(thisRound.length-difference, thisRound.length)
-          } else {
-            teams[key] = thisRound.slice(thisRound.length-difference, thisRound.length)
+  ensureOrder = (rounds) => {
+    // start at one because the order of the first round isn't modified
+    for (let ii = 1; ii < rounds.length; ii++) {
+      let priorRound = this.groupIntoColumns(rounds[ii-1]);
+      let thisRound = rounds[ii];
+      let roundOrder = {};
+      for (let jj = 0; jj < thisRound.length; jj++){
+        let thisMatch = thisRound[jj];
+        if (priorRound[jj] === undefined){
+          if (roundOrder[-1] === undefined) {
+            roundOrder[-1] = [];
           }
-        } else if (thisRound.length === matchCounts[key]) {
-          // console.log(thisRound);
+          if (thisMatch["top"] === "" && thisMatch["bottom"] === "") {
+            roundOrder[-1].unshift(thisMatch);
+          } else {
+            roundOrder[-1].push(thisMatch);
+          }
+          continue
         }
+        
+        let top, bottom;
+        if (priorRound[jj].length > 0) {
+          top = priorRound[jj][0][priorRound[jj][0]["winnerPos"]];
+        }
+        if (priorRound[jj].length > 1) {
+          bottom = priorRound[jj][1][priorRound[jj][1]["winnerPos"]];
+        }
+        
+        if (thisMatch["top"] === top && thisMatch["bottom"] === bottom){
+          roundOrder[jj] = thisMatch;
+          continue;
+        }
+        else {
+          let found = false;
+          for (let kk = 0; kk < priorRound.length; kk++) {
+
+            if (priorRound[kk].length > 0) {
+              top = priorRound[kk][0][priorRound[kk][0]["winnerPos"]];
+            }
+            if (priorRound[kk].length > 1) {
+              bottom = priorRound[kk][1][priorRound[kk][1]["winnerPos"]];
+            }
+            if (thisMatch["top"] === top && thisMatch["bottom"] === bottom){
+              roundOrder[kk] = thisMatch;
+              found = true;
+              break;
+            }
+
+            if (!found) {
+              if (roundOrder[-1] === undefined) {
+                roundOrder[-1] = [];
+              }
+              if (thisMatch["top"] === "" && thisMatch["bottom"] === "") {
+                roundOrder[-1].unshift(thisMatch);
+              } else {
+                roundOrder[-1].push(thisMatch);
+              }
+              break;
+            }
+
+          }
+        }
+        console.log(ii, roundOrder);
+        
       }
-    return teams;
+      rounds[ii] = Object.values(roundOrder).flat();
+      console.log(Object.values(roundOrder));
+    }
+
   }
 
   groupIntoColumns(teams) {
@@ -104,8 +165,8 @@ class Bracket extends Component {
   }
 
   renderMatch = matches => {
-    let { focusedValue, teams } = this.state;
-    let isFinalMatch = matches[0] === teams[teams.length-1][0];
+    let { focusedValue, rounds } = this.state;
+    let isFinalMatch = matches[0] === rounds[rounds.length-1][0];
     return (
         <div key={ uuidv4() } className={ `group ${matches.length === 1 ? "single" : ""}`}>
             <div className="col">
@@ -121,20 +182,23 @@ class Bracket extends Component {
   }
 
   render() {
-    let { title, teams } = this.props;
-    let structuredTeams = teams;
-    // let structuredTeams = this._restructureTeams(teams);
+    let { title, fillMissing } = this.props;
+    let { rounds } = this.state;
+    rounds = fillMissing ? this.addMissingMatches(rounds) : rounds;
+    // this.ensureOrder(rounds);
+    // let rounds = this.formatAsBracket();
+    // console.log(JSON.stringify(rounds));
     return (
       <div className="ui-popup-container">
           <div className="bracket-view showing-bracket">
               <div className="bracket-full-wrapper">
                   <div className="v2-bracket bracket-content">
                       <div className="bracket-region">
-                        { structuredTeams.map(team => {
+                        { rounds.map(round => {
                           return (
                             <div key={ uuidv4() } className="bracket-round">
                               <div className="matchups">
-                                { this._groupIntoColumns(team).map(this.renderMatch) }
+                                { this.groupIntoColumns(round).map(this.renderMatch) }
                               </div>
                             </div>
                           )
@@ -150,5 +214,10 @@ class Bracket extends Component {
       )
   };
 }
+
+Bracket.defaultProps = {
+  fillMissing: true,
+}
+
 
 export default Bracket;

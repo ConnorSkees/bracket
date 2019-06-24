@@ -54,7 +54,7 @@ class Sandbox extends Component {
     let { firstRoundTeams, isDeleting, isPreview } = this.state;
     console.log(this._organizeTeams());
     if (isPreview) {
-      return <Bracket teams={ [this._organizeTeams()] } title={ "March Madness 2019" } />
+      return <Bracket rounds={ [this._organizeTeams()] } title={ "March Madness 2019" } />
     }
     return (
       <React.Fragment>
@@ -76,7 +76,7 @@ class Sandbox extends Component {
             }) }
           </div>
         </div>
-        <Bracket teams={ [this._organizeTeams()] } title={ "March Madness 2019" } />
+        <Bracket rounds={ [this._organizeTeams()] } title={ "March Madness 2019" } />
       </React.Fragment>
     );
   }
