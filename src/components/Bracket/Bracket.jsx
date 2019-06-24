@@ -140,11 +140,8 @@ class Bracket extends Component {
 
           }
         }
-        console.log(ii, roundOrder);
-        
       }
       rounds[ii] = Object.values(roundOrder).flat();
-      console.log(Object.values(roundOrder));
     }
 
   }
@@ -186,8 +183,6 @@ class Bracket extends Component {
     let { rounds } = this.state;
     rounds = fillMissing ? this.addMissingMatches(rounds) : rounds;
     // this.ensureOrder(rounds);
-    // let rounds = this.formatAsBracket();
-    // console.log(JSON.stringify(rounds));
     return (
       <div className="ui-popup-container">
           <div className="bracket-view showing-bracket">
