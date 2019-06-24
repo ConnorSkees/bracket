@@ -43,7 +43,6 @@ class Sandbox extends Component {
       let dict = {"top": teams[i]||""};
       if (i+1 < teams.length) {dict["bottom"] = teams[i+1]||"";}
       if (i+1 >= teams.length) {dict["winnerPos"] = "top"}
-      console.log(dict);
       rounds.push(dict)
       i += 2;
     }
@@ -52,7 +51,6 @@ class Sandbox extends Component {
 
   render() {
     let { firstRoundTeams, isDeleting, isPreview } = this.state;
-    console.log(this._organizeTeams());
     if (isPreview) {
       return <Bracket rounds={ [this._organizeTeams()] } title={ "March Madness 2019" } />
     }
